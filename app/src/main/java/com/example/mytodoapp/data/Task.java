@@ -1,30 +1,23 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.data;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "task_table")
 public class Task {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
     private String description;
     private boolean isComplete;
+    private int priority;
 
-    public Task(int i, String s, String s1, boolean isComplete) {
-        this.isComplete = isComplete;
-    }
-
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    public void setComplete(boolean complete) {
-        isComplete = complete;
-    }
-
-
-
-    public Task(int id, String title, String description) {
-        this.id = id;
+    public Task(String title, String description, boolean isComplete, int priority) {
         this.title = title;
         this.description = description;
+        this.isComplete = isComplete;
+        this.priority = priority;
     }
     public int getId() {
         return id;
@@ -38,17 +31,14 @@ public class Task {
         return description;
     }
 
+    public boolean isComplete() {
+        return isComplete;
+    }
+    public int getPriority() {
+        return priority;
+    }
 
     public void setId(int id) {
         this.id = id;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 }

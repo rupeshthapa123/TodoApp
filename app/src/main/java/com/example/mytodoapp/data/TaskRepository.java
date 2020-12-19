@@ -1,8 +1,6 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.data;
 
 import android.util.Log;
-
-import com.example.mytodoapp.data.Task;
 
 import java.util.ArrayList;
 
@@ -25,7 +23,7 @@ public class TaskRepository {
 
      private void initTestData(){
          for (int i=0; i<5; i++){
-             Task task = new Task(i, "title:" + i, "description:"+i, false );
+             Task task = new Task("title:" + i, "description:" + i, false, i );
              taskList.add(task);
          }
      }
