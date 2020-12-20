@@ -34,6 +34,7 @@ public class Task {
     public boolean isComplete() {
         return isComplete;
     }
+
     public int getPriority() {
         return priority;
     }

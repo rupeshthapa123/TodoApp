@@ -31,19 +31,4 @@ public abstract class TaskDatabase extends RoomDatabase {
         }
         return instance;
     }
-
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-        }
-    };
-    /*
-    private TaskDao  taskDao;
-    public void testdata(){
-        taskDao.insert(new Task("Title1","Description1",false,1));
-        taskDao.insert(new Task("Title2","Description2",false,2));
-        taskDao.insert(new Task("Title3","Description3",false,1));
-    }
-    */
 }
