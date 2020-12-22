@@ -3,6 +3,7 @@ package com.example.mytodoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,7 +39,7 @@ public class TaskDetailActivity extends AppCompatActivity {
         isComplete = findViewById(R.id.iscom_id);
         numberPickerPriority = findViewById(R.id.priority_number_pick);
         numberPickerPriority.setMinValue(1);
-        numberPickerPriority.setMaxValue(5);
+        numberPickerPriority.setMaxValue(3);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setTitle("Add Task");
@@ -47,7 +48,7 @@ public class TaskDetailActivity extends AppCompatActivity {
     private void SaveTask() {
         String title = editTextTitle.getText().toString();
         String description = editTextDesc.getText().toString();
-        Boolean isCompl = isComplete.isChecked();
+        boolean isCompl = isComplete.isChecked();
         int priority = numberPickerPriority.getValue();
 
         if (title.trim().isEmpty() || description.trim().isEmpty()) {
@@ -71,14 +72,13 @@ public class TaskDetailActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.save_task:
-                SaveTask();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.save_task) {
+            SaveTask();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

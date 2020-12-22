@@ -45,7 +45,7 @@ public class TaskActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        final TaskAdapter adapter = new TaskAdapter();
+        final TaskAdapter adapter = new TaskAdapter(this);
         recyclerView.setAdapter(adapter);
 
         taskViewModel = new ViewModelProvider(this).get(TaskViewModel.class);
@@ -63,7 +63,7 @@ public class TaskActivity extends AppCompatActivity {
         if(requestCode == ADD_TASK_REQUEST && resultCode == RESULT_OK){
             String title = data.getStringExtra(TaskDetailActivity.EXTRA_TITLE);
             String description = data.getStringExtra(TaskDetailActivity.EXTRA_DESCRIPTION);
-            Boolean isCompl = data.getBooleanExtra(TaskDetailActivity.EXTRA_COMPLETE,false);
+            boolean isCompl = data.getBooleanExtra(TaskDetailActivity.EXTRA_COMPLETE,false);
             int priority = data.getIntExtra(TaskDetailActivity.EXTRA_PRIORITY,1);
 
             Task task = new Task(title,description,isCompl,priority);

@@ -13,8 +13,8 @@ import java.util.List;
 
 public class TaskViewModel extends AndroidViewModel{
 
-    private TaskRepository repository;
-    private LiveData<List<Task>> alltasks;
+    private final TaskRepository repository;
+    private final LiveData<List<Task>> alltasks;
     public TaskViewModel(@NonNull Application application) {
         super(application);
         repository = new TaskRepository(application);

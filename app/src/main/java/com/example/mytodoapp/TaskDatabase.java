@@ -21,7 +21,7 @@ public abstract class TaskDatabase extends RoomDatabase {
     private static TaskDatabase instance;
     private static final String LOG_TAG = TaskDatabase.class.getSimpleName();
     private static final Object LOCK = new Object();
-    private static String DATABASE_NAME = "todolist";
+    private static final String DATABASE_NAME = "todolist";
     public abstract TaskDao taskDao();
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(1);

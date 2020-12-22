@@ -39,11 +39,11 @@
             android:text="Description"/>
 
         <CheckBox
-            android:id="@+id/iscom_id"
+            android:id="@+id/text_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_description"
-            android:text="IsComplete" />
+            android:text="Completed" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
