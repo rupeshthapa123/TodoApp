@@ -45,12 +45,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
        private TextView textViewTitle;
        private TextView textViewDesc;
        private TextView textViewPriority;
-
        public TaskHolder(View itemView){
            super(itemView);
            textViewTitle = itemView.findViewById(R.id.text_title);
            textViewDesc = itemView.findViewById(R.id.text_description);
-           textViewPriority = itemView.findViewById(R.id.text_priority);;
+           textViewPriority = itemView.findViewById(R.id.text_priority);
        }
     }
 }

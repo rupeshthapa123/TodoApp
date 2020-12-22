@@ -23,7 +23,7 @@ public class TaskRepository {
         alltasks = taskDao.getAllTasks();
     }
 
-    public void insert(Task task){
+    public void insert(final Task task){
         TaskDatabase.databaseWriteExecutor.execute(new Runnable(){
             @Override
             public void run() {
@@ -32,7 +32,7 @@ public class TaskRepository {
         });
     }
 
-    public void update(Task task){
+    public void update(final Task task){
          TaskDatabase.databaseWriteExecutor.execute(new Runnable() {
              @Override
              public void run() {
@@ -41,7 +41,7 @@ public class TaskRepository {
          });
     }
 
-    public void delete(Task task){
+    public void delete(final Task task){
           TaskDatabase.databaseWriteExecutor.execute(new Runnable() {
               @Override
               public void run() {
@@ -53,57 +53,6 @@ public class TaskRepository {
     public LiveData<List<Task>> getAlltasks() {
         return alltasks;
     }
-
-    /*
-    private static TaskRepository repository;
-
-    public static final String TAG = "TaskRepository";
-
-     public static TaskRepository getInstance(){
-         if (repository == null){
-             repository = new TaskRepository();
-         }
-         return repository;
-     }
-
-     private TaskRepository(){
-        initTestData();
-     }
-
-     private void initTestData(){
-         for (int i=0; i<5; i++){
-             Task task = new Task("title:" + i, "description:" + i, false, i );
-             taskList.add(task);
-         }
-     }
-     public Task getTask(int id){
-         return taskList.get(id);
-     }
-
-     public Task getNextTask(Task task) {
-         int currentTaskId = task.getId();
-         int nextTaskId = 0;
-
-         if(currentTaskId<taskList.size()-1){
-             nextTaskId = currentTaskId +   1;
-         }
-         else if (currentTaskId == taskList.size()-1){
-             nextTaskId =currentTaskId;
-         }
-         else
-         {
-             Log.d(TAG, "getNextTask: currentTaskId out of bound, reset to 0!");
-         }
-         return taskList.get(nextTaskId);
-     }
-
-     public boolean isLast(Task nTask){
-         return nTask.getId()==taskList.size()-1;
-     }
-
-     public Task getFirstTask(){
-         return taskList.get(0);
-     }*/
 }
 
 
