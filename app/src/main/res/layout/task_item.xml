@@ -24,7 +24,7 @@
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="Task"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:maxLines="1"
             android:layout_toStartOf="@id/text_priority"
@@ -32,17 +32,19 @@
             android:ellipsize="end"/>
 
         <TextView
-            android:id="@+id/text_description"
-            android:layout_width="wrap_content"
+            android:id="@+id/taskUpdatedAt"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_title"
-            android:text="Description"/>
+            android:textColor="@android:color/primary_text_light"
+            android:text="22/12/2222" />
 
         <CheckBox
             android:id="@+id/text_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_description"
+            android:layout_below="@id/taskUpdatedAt"
             android:text="Completed" />
     </RelativeLayout>
 

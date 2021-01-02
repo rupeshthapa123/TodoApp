@@ -8,6 +8,7 @@ import androidx.loader.content.AsyncTaskLoader;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.mytodoapp.data.Task;
@@ -16,6 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Task.class}, version = 1, exportSchema = false)
+@TypeConverters(DateConverter.class)
 public abstract class TaskDatabase extends RoomDatabase {
 
     private static TaskDatabase instance;
@@ -32,7 +34,7 @@ public abstract class TaskDatabase extends RoomDatabase {
                 Log.d(LOG_TAG, "Creating a new database instance");
                 instance = Room.databaseBuilder(context.getApplicationContext(),
                         TaskDatabase.class, TaskDatabase.DATABASE_NAME)
-                       // .fallbackToDestructiveMigration()
+                        .fallbackToDestructiveMigration()
                         .build();
             }
         }

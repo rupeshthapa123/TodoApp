@@ -18,6 +18,13 @@ public interface TaskDao {
     void update(Task task);
     @Delete
     void delete(Task task);
-    @Query("SELECT * FROM task_table ORDER BY priority DESC")
+
+    @Query("SELECT * FROM task_table ORDER BY priority")
     LiveData<List<Task>> getAllTasks();
+
+    @Query("Select * from task_table where id =:taskId")
+    LiveData<Task> loadTAskById(int taskId);
+
+    @Query("Delete from task_table where isComplete = :value")
+    void deleteCompletedTask(Boolean value);
 }

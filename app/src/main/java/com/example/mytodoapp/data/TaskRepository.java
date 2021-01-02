@@ -50,8 +50,21 @@ public class TaskRepository {
           });
     }
 
+    public void deleteCompletedTask(final Boolean value){
+        TaskDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                taskDao.deleteCompletedTask(value);
+            }
+        });
+    }
+
     public LiveData<List<Task>> getAlltasks() {
         return alltasks;
+    }
+
+    public LiveData<Task> getTaskById(int taskId){
+        return taskDao.loadTAskById(taskId);
     }
 }
 

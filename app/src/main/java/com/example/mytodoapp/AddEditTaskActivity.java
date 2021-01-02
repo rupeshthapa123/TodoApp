@@ -15,17 +15,21 @@ import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class TaskDetailActivity extends AppCompatActivity {
+import java.util.Date;
+
+public class AddEditTaskActivity extends AppCompatActivity {
+    public static final String EXTRA_ID =
+            "package com.example.mytodoapp.EXTRA_ID";
     public static final String EXTRA_TITLE =
             "package com.example.mytodoapp.EXTRA_TITLE";
-    public static final String EXTRA_DESCRIPTION =
-            "package com.example.mytodoapp.EXTRA_DESCRIPTION";
+    public static final String EXTRA_DATE =
+            "package com.example.mytodoapp.EXTRA_DATE";
     public static final String EXTRA_COMPLETE =
             "package com.example.mytodoapp.EXTRA_COMPLETE";
     public static final String EXTRA_PRIORITY =
             "package com.example.mytodoapp.EXTRA_PRIORITY";
     private EditText editTextTitle;
-    private EditText editTextDesc;
+
     private NumberPicker numberPickerPriority;
     private CheckBox isComplete;
 
@@ -35,32 +39,43 @@ public class TaskDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_detail);
 
         editTextTitle = findViewById(R.id.title_id);
-        editTextDesc = findViewById(R.id.desc_id);
+
         isComplete = findViewById(R.id.iscom_id);
         numberPickerPriority = findViewById(R.id.priority_number_pick);
         numberPickerPriority.setMinValue(1);
         numberPickerPriority.setMaxValue(3);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        setTitle("Add Task");
+
+        Intent intent = getIntent();
+        if (intent.hasExtra(EXTRA_ID)){
+            setTitle("Edit Task");
+            editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
+            isComplete.setChecked(Boolean.parseBoolean(intent.getStringExtra(EXTRA_COMPLETE)));
+            numberPickerPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+        }else {
+            setTitle("Add Task");
+        }
     }
 
     private void SaveTask() {
         String title = editTextTitle.getText().toString();
-        String description = editTextDesc.getText().toString();
         boolean isCompl = isComplete.isChecked();
         int priority = numberPickerPriority.getValue();
-
-        if (title.trim().isEmpty() || description.trim().isEmpty()) {
-            Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
+        if (title.trim().isEmpty()) {
+            Toast.makeText(this, "Please insert a task", Toast.LENGTH_SHORT).show();
             return;
         }
 
         Intent data = new Intent();
         data.putExtra(EXTRA_TITLE, title);
-        data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_COMPLETE, isCompl);
         data.putExtra(EXTRA_PRIORITY, priority);
+
+        int id = getIntent().getIntExtra(EXTRA_ID,-1);
+        if(id != -1){
+            data.putExtra(EXTRA_ID, id);
+        }
         setResult(RESULT_OK, data);
         finish();
     }

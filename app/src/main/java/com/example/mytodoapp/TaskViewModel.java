@@ -33,6 +33,10 @@ public class TaskViewModel extends AndroidViewModel{
         repository.delete(task);
     }
 
+    public void deleteCompletedTask(Boolean value){
+        repository.deleteCompletedTask(value);
+    }
+
     public LiveData<List<Task>> getAlltasks() {
         return alltasks;
     }

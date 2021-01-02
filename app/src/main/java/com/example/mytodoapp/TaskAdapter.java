@@ -9,20 +9,43 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytodoapp.data.Task;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
-    private List<Task> tasks = new ArrayList<>();
+public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskHolder> {
+    private OnItemClickListener listener;
+
     private final Context mContext;
+    // Constant for date format
+    private static final String DATE_FORMAT = "dd/MM/yyy";
+    // Date formatter
+    private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     public TaskAdapter(Context context) {
+        super(DIFF_CALLBACK);
         mContext = context;
     }
+    private static final DiffUtil.ItemCallback<Task> DIFF_CALLBACK = new DiffUtil.ItemCallback<Task>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Task oldItem, @NonNull Task newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Task oldItem, @NonNull Task newItem) {
+            return oldItem.getTitle().equals(newItem.getTitle())&&
+                    oldItem.getPriority() == newItem.getPriority()&&
+                    oldItem.isComplete() == newItem.isComplete();
+        }
+    };
 
     @NonNull
     @Override
@@ -34,33 +57,46 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-        final Task CurrentTask = tasks.get(position);
+        final Task CurrentTask = getItem(position);
         holder.textViewTitle.setText(String.valueOf(CurrentTask.getTitle()));
-        holder.textViewDesc.setText(String.valueOf(CurrentTask.getDescription()));
+        holder.updatedAtView.setText(dateFormat.format(CurrentTask.getUpdatedAt()));
         holder.textViewPriority.setText(String.valueOf(CurrentTask.getPriority()));
         holder.textViewComplete.setChecked(CurrentTask.isComplete());
     }
 
-    @Override
-    public int getItemCount() {
-        return tasks.size();
+    public Task getTaskAt(int Position){
+        return getItem(Position);
     }
 
-    public void setTasks(List<Task> tasks){
-        this.tasks = tasks;
-        notifyDataSetChanged();
-    }
-       static class TaskHolder extends RecyclerView.ViewHolder{
+    class TaskHolder extends RecyclerView.ViewHolder{
        private final TextView textViewTitle;
-       private final TextView textViewDesc;
+       private final TextView updatedAtView;
        private final TextView textViewPriority;
        private final CheckBox textViewComplete;
        public TaskHolder(View itemView){
            super(itemView);
            textViewTitle = itemView.findViewById(R.id.text_title);
-           textViewDesc = itemView.findViewById(R.id.text_description);
+           updatedAtView = itemView.findViewById(R.id.taskUpdatedAt);
            textViewPriority = itemView.findViewById(R.id.text_priority);
            textViewComplete = itemView.findViewById(R.id.text_complete);
+
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   int position = getAdapterPosition();
+                   if (listener!=null && position !=RecyclerView.NO_POSITION ) {
+                       listener.onItemClick(getItem(position));
+                   }
+               }
+           });
        }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Task task);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
