@@ -12,10 +12,9 @@
         android:id="@+id/title_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Task"
-        android:hint="Task"
+        android:hint="Write a Task here"
         android:inputType="text"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="Autofill,HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/priority_id"
@@ -25,7 +24,8 @@
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_id"/>
+        app:layout_constraintTop_toBottomOf="@+id/title_id"
+        tools:ignore="HardcodedText" />
 
     <NumberPicker
         android:id="@+id/priority_number_pick"
@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Completed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priority_number_pick"/>
+        app:layout_constraintTop_toBottomOf="@+id/priority_number_pick"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

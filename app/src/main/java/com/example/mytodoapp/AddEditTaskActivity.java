@@ -51,8 +51,9 @@ public class AddEditTaskActivity extends AppCompatActivity {
         if (intent.hasExtra(EXTRA_ID)){
             setTitle("Edit Task");
             editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
-            isComplete.setChecked(Boolean.parseBoolean(intent.getStringExtra(EXTRA_COMPLETE)));
+            isComplete.setChecked(Boolean.parseBoolean(String.valueOf(intent.getBooleanExtra(EXTRA_COMPLETE,false))));
             numberPickerPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+
         }else {
             setTitle("Add Task");
         }

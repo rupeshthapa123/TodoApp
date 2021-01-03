@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyToDoApp">
-        <activity android:name=".AddEditTaskActivity"
-            android:parentActivityName=".TaskActivity"/>
-        <activity android:name=".TaskActivity"
+
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".AddEditTaskActivity"
+            android:parentActivityName=".TaskActivity" />
+        <activity
+            android:name=".TaskActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
