@@ -1,16 +1,9 @@
-package com.example.mytodoapp.data;
+package com.example.mytodoapp.database;
 
 import android.app.Application;
-import android.os.AsyncTask;
-import android.provider.ContactsContract;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mytodoapp.TaskDao;
-import com.example.mytodoapp.TaskDatabase;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {

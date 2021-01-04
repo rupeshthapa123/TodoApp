@@ -13,8 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Write a Task here"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         tools:ignore="Autofill,HardcodedText,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/date_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Date"
+        android:inputType="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_id"
+        tools:ignore="Autofill,HardcodedText" />
+
+    <EditText
+        android:id="@+id/time_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Time"
+        android:inputType="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_task"
+        tools:ignore="Autofill,HardcodedText" />
 
     <TextView
         android:id="@+id/priority_id"
@@ -24,7 +44,7 @@
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_id"
+        app:layout_constraintTop_toBottomOf="@+id/time_task"
         tools:ignore="HardcodedText" />
 
     <NumberPicker

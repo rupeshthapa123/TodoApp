@@ -1,4 +1,4 @@
-package com.example.mytodoapp.data;
+package com.example.mytodoapp.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -15,11 +15,30 @@ public class Task {
     private final boolean isComplete;
     private final int priority;
     @ColumnInfo(name="updated_at")
-    private Date updatedAt;
+    private String updatedAt;
+    @ColumnInfo(name = "notify_time")
+    private String notifyTime;
 
-    public Task(String title, Date updatedAt, boolean isComplete, int priority) {
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getNotifyTime() {
+        return notifyTime;
+    }
+
+    public void setNotifyTime(String notifyTime) {
+        this.notifyTime = notifyTime;
+    }
+
+    public Task(String title, String updatedAt, String notifyTime, boolean isComplete, int priority) {
         this.title = title;
         this.updatedAt = updatedAt;
+        this.notifyTime = notifyTime;
         this.isComplete = isComplete;
         this.priority = priority;
     }
@@ -42,13 +61,4 @@ public class Task {
     public void setId(int id) {
         this.id = id;
     }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
 }

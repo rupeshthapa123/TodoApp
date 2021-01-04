@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.mytodoapp.data.Task;
-import com.example.mytodoapp.data.TaskRepository;
+import com.example.mytodoapp.database.Task;
+import com.example.mytodoapp.database.TaskRepository;
 
 import java.util.List;
 

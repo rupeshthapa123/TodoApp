@@ -24,11 +24,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.mytodoapp.data.Task;
+import com.example.mytodoapp.database.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -36,6 +39,7 @@ public class TaskFragment extends Fragment {
     public static final int ADD_TASK_REQUEST = 1;
     public static final int EDIT_TASK_REQUEST = 2;
     private TaskViewModel taskViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +91,7 @@ public class TaskFragment extends Fragment {
                 intent.putExtra(AddEditTaskActivity.EXTRA_ID,task.getId());
                 intent.putExtra(AddEditTaskActivity.EXTRA_TITLE,task.getTitle());
                 intent.putExtra(AddEditTaskActivity.EXTRA_DATE,task.getUpdatedAt());
+                intent.putExtra(AddEditTaskActivity.EXTRA_TIME,task.getNotifyTime());
                 intent.putExtra(AddEditTaskActivity.EXTRA_COMPLETE,task.isComplete());
                 intent.putExtra(AddEditTaskActivity.EXTRA_PRIORITY,task.getPriority());
                 startActivityForResult(intent, EDIT_TASK_REQUEST);
@@ -101,13 +106,12 @@ public class TaskFragment extends Fragment {
 
         if(requestCode == ADD_TASK_REQUEST && resultCode == RESULT_OK){
             String title = data.getStringExtra(AddEditTaskActivity.EXTRA_TITLE);
-            Date date = new Date();
+            String dateUp = data.getStringExtra(AddEditTaskActivity.EXTRA_DATE);
+            String timeAt = data.getStringExtra(AddEditTaskActivity.EXTRA_TIME);
             boolean isCompl = data.getBooleanExtra(AddEditTaskActivity.EXTRA_COMPLETE,false);
             int priority = data.getIntExtra(AddEditTaskActivity.EXTRA_PRIORITY,1);
-
-            Task task = new Task(title,date,isCompl,priority);
+            Task task = new Task(title,dateUp,timeAt,isCompl,priority);
             taskViewModel.insert(task);
-
             Toast.makeText(getContext(), "Task Saved", Toast.LENGTH_SHORT).show();
         } else if(requestCode == EDIT_TASK_REQUEST && resultCode == RESULT_OK) {
             int id = data.getIntExtra(AddEditTaskActivity.EXTRA_ID, -1);
@@ -118,11 +122,12 @@ public class TaskFragment extends Fragment {
             }
 
             String title = data.getStringExtra(AddEditTaskActivity.EXTRA_TITLE);
-            Date date = new Date();
+            String dateUpd = data.getStringExtra(AddEditTaskActivity.EXTRA_DATE);
+            String timeComp = data.getStringExtra(AddEditTaskActivity.EXTRA_TIME);
             boolean isCompl = data.getBooleanExtra(AddEditTaskActivity.EXTRA_COMPLETE,false);
             int priority = data.getIntExtra(AddEditTaskActivity.EXTRA_PRIORITY,1);
 
-            Task task = new Task(title,date,isCompl,priority);
+            Task task = new Task(title,dateUpd,timeComp,isCompl,priority);
             task.setId(id);
             taskViewModel.update(task);
             Toast.makeText(getContext(), "Task Updated", Toast.LENGTH_SHORT).show();
@@ -152,5 +157,4 @@ public class TaskFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }

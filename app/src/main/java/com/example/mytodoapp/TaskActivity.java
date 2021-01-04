@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 
 public class TaskActivity extends AppCompatActivity {
-    private TaskViewModel taskViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
