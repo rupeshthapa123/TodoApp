@@ -15,3 +15,9 @@ The app helps user in their daily life to keep track or remind them of important
  The model part contains database related class such as DAO, Task Model, Task Database class. The repository class is also related with model but it is the class that helps communicating between Model and View Model class. The viewmodel class provides live data to the View part or UI which basically include activity or fragments.
  
  
+# Get Started
+
+<img src="Screenshot/Screenshot1.jpg" alt="drawing" width="200"/><img src="Screenshot/Screenshot2.jpg" alt="drawing" width="200"/>
+<img src="Screenshot/Screenshot3.jpg" alt="drawing" width="200"/><img src="Screenshot/Screenshot4.jpg" alt="drawing" width="200"/>
+<img src="Screenshot/Screenshot5.jpg" alt="drawing" width="200"/><img src="Screenshot/Screenshot6.jpg" alt="drawing" width="200"/>
+<img src="Screenshot/Screenshot7.jpg" alt="drawing" width="200"/><img src="Screenshot/Screenshot8.jpg" alt="drawing" width="200"/>
