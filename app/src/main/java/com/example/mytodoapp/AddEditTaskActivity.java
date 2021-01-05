@@ -187,6 +187,7 @@ public class AddEditTaskActivity extends AppCompatActivity{
         @SuppressLint("SimpleDateFormat") DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         try {
             Date date1 = formatter.parse(dateandtime);
+            assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
         } catch (ParseException e) {
             e.printStackTrace();
