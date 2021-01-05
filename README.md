@@ -26,7 +26,7 @@ The model part contains database related class such as DAO, Task Model, Task Dat
 - Task Details stored in SQLite Database.
 - The notification will be shown at the set time and date even when app is closed.
 
-# Get Started
+# Getting Started
 
 The app can be installed and started easily. The below steps show how to use the app.
 
@@ -54,4 +54,4 @@ menu options to delete all completed task at once.
 
 
 ## License
-
+Copyright 2021 Rupesh, Inc.
