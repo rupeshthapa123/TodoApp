@@ -1,4 +1,4 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.Viewmodel;
 
 import android.app.Application;
 

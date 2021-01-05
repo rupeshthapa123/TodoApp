@@ -1,9 +1,11 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.utility;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.mytodoapp.R;
 
 public class NotificationMessage extends AppCompatActivity {
     TextView textView;

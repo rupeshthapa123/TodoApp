@@ -1,4 +1,4 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -24,14 +24,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.mytodoapp.R;
+import com.example.mytodoapp.Viewmodel.TaskViewModel;
 import com.example.mytodoapp.database.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 
 import static android.app.Activity.RESULT_OK;
 

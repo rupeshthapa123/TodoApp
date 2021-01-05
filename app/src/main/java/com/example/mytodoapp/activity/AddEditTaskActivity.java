@@ -1,4 +1,4 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,14 +22,14 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Time;
+import com.example.mytodoapp.utility.AlarmBroadcast;
+import com.example.mytodoapp.R;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.Timer;
 
 public class AddEditTaskActivity extends AppCompatActivity{
     public static final String EXTRA_ID =
@@ -60,7 +60,7 @@ public class AddEditTaskActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_detail);
+        setContentView(R.layout.addedit_task_detail);
 
         editTextTitle = findViewById(R.id.title_id);
         date_in = findViewById(R.id.date_task);
@@ -178,7 +178,7 @@ public class AddEditTaskActivity extends AppCompatActivity{
 
     public void setAlarm(String text, String date, String time){
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getApplicationContext(),AlarmBroadcast.class);
+        Intent intent = new Intent(getApplicationContext(), AlarmBroadcast.class);
         intent.putExtra("task",text);
         intent.putExtra("date",date);
         intent.putExtra("time",time);

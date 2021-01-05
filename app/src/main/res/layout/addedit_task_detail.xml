@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".AddEditTaskActivity">
+    android:padding="8dp"
+    tools:context=".activity.AddEditTaskActivity">
 
     <EditText
         android:id="@+id/title_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Write a Task here"
-        android:inputType="textMultiLine"
+        android:inputType="text"
         tools:ignore="Autofill,HardcodedText,MissingConstraints" />
 
     <EditText
@@ -24,7 +24,7 @@
         android:inputType="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_id"
-        tools:ignore="Autofill,HardcodedText" />
+        tools:ignore="Autofill,HardcodedText,TextFields" />
 
     <EditText
         android:id="@+id/time_task"
@@ -52,15 +52,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/cardview_shadow_start_color"
         app:layout_constraintTop_toBottomOf="@+id/priority_id"/>
 
     <CheckBox
         android:id="@+id/iscom_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="120dp"
+        android:background="@color/cardview_shadow_start_color"
         android:text="Completed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priority_number_pick"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@+id/time_task"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

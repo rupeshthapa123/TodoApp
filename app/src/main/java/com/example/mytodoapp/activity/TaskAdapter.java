@@ -1,8 +1,6 @@
-package com.example.mytodoapp;
+package com.example.mytodoapp.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +8,12 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mytodoapp.R;
 import com.example.mytodoapp.database.Task;
-
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
 
 public class TaskAdapter extends ListAdapter<Task, TaskAdapter.TaskHolder> {
     private OnItemClickListener listener;
