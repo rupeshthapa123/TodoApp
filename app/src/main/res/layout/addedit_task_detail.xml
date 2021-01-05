@@ -52,16 +52,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/cardview_shadow_start_color"
         app:layout_constraintTop_toBottomOf="@+id/priority_id"/>
 
     <CheckBox
         android:id="@+id/iscom_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="120dp"
-        android:background="@color/cardview_shadow_start_color"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="100dp"
         android:text="Completed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_task"
