@@ -9,4 +9,5 @@ The app helps user in their daily life to keep track or remind them of important
  
  # Architecture
  
+ ![](architecture.png)
  
